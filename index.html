@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE MACEDA CHRONICLE — Silugan sa Maceda | Table Reservation & Pre-Order</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: UnifrakturMaguntia (Blackletter Masthead), Anton (Tabloid Headlines), Newsreader & Playfair Display (Newspaper Body), Space Mono (Data/Prices/Time) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400&family=Playfair+Display:wght@800;900&family=Space+Mono:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        masthead: ['UnifrakturMaguntia', 'Playfair Display', 'serif'],
+                        serifhead: ['Playfair Display', 'serif'],
+                        headline: ['Anton', 'sans-serif'],
+                        body: ['Newsreader', 'Georgia', 'serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    colors: {
+                        dyaryo: {
+                            DEFAULT: '#EFE8D8',
+                            dark: '#E5DEC9',
+                            aged: '#D8CEB8',
+                            paper: '#FAF6EE'
+                        },
+                        tinta: {
+                            DEFAULT: '#141210',
+                            muted: '#4A4542',
+                            faded: '#736C66'
+                        },
+                        pulangtatak: {
+                            DEFAULT: '#B82920',
+                            dark: '#8F1D1A'
+                        },
+                        yolk: {
+                            DEFAULT: '#D98A16',
+                            light: '#F2B84B'
+                        },
+                        dahon: {
+                            DEFAULT: '#1E4D38'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Authentic Aged Manila Newsprint Texture */
+        body {
+            background-color: #EFE8D8;
+            color: #141210;
+            background-image: 
+                radial-gradient(rgba(20, 18, 16, 0.055) 1px, transparent 0),
+                linear-gradient(to bottom, rgba(229, 222, 201, 0.4), rgba(239, 232, 216, 0.85));
+            background-size: 16px 16px, 100% 100%;
+            overflow-x: hidden;
+        }
+
+        /* Newspaper Double Rules & Box Frames */
+        .dyaryo-box {
+            background-color: #FAF6EE;
+            border: 2px solid #141210;
+            box-shadow: 4px 4px 0px #141210;
+        }
+
+        .dyaryo-box-flat {
+            background-color: #E5DEC9;
+            border: 1.5px solid #141210;
+        }
+
+        /* Press Button Effect */
+        .dyaryo-btn {
+            border: 2px solid #141210;
+            box-shadow: 3px 3px 0px #141210;
+            transition: all 0.12s ease;
+        }
+        .dyaryo-btn:hover {
+            transform: translate(-1.5px, -1.5px);
+            box-shadow: 5px 5px 0px #141210;
+        }
+        .dyaryo-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #141210;
+        }
+
+        /* Active Selection State for Time, Table & Presets */
+        .slot-selected {
+            background-color: #141210 !important;
+            color: #FAF6EE !important;
+            border-color: #141210 !important;
+            box-shadow: 3px 3px 0px #B82920 !important;
+        }
+
+        .table-zone-selected {
+            background-color: #FAF6EE !important;
+            border: 2.5px solid #B82920 !important;
+            box-shadow: 5px 5px 0px #141210 !important;
+        }
+
+        /* Vintage Newspaper Photo Filter */
+        .newsprint-photo {
+            filter: contrast(1.06) sepia(0.12) saturate(1.08);
+            transition: filter 0.25s ease, transform 0.25s ease;
+        }
+        .newsprint-photo:hover {
+            filter: contrast(1.02) sepia(0) saturate(1.15);
+        }
+
+        /* Rubber Stamp Effect */
+        .rubber-stamp {
+            border: 3px double #B82920;
+            color: #B82920;
+            transform: rotate(-3deg);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .rubber-stamp-green {
+            border: 3px double #1E4D38;
+            color: #1E4D38;
+            transform: rotate(-2deg);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* Cut-out Coupon Dashed Border */
+        .kupon-cutout {
+            border: 2.5px dashed #141210;
+            background-color: #FAF6EE;
+            box-shadow: 6px 6px 0px #141210;
+        }
+    </style>
+</head>
+<body class="font-body antialiased selection:bg-pulangtatak selection:text-white">
+
+    <!-- =================================================================== -->
+    <!-- 1. VINTAGE MANILA BROADSHEET MASTHEAD ("THE MACEDA CHRONICLE")      -->
+    <!-- =================================================================== -->
+    <header class="border-b-4 border-double border-tinta bg-dyaryo pt-3 pb-2 px-3 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Top Ears & Issue Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b-2 border-tinta text-[11px] sm:text-xs font-mono font-bold tracking-tight uppercase">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <span class="bg-tinta text-dyaryo px-2 py-0.5">VOL. XXVI • NO. 1008</span>
+                    <span>SAMPALOC, MANILA</span>
+                    <span class="hidden md:inline">• OPEN DAILY: 5:00 PM – 1:00 AM</span>
+                </div>
+
+                <div class="flex items-center gap-2 ml-auto flex-wrap">
+                    <!-- 1-CLICK LANGUAGE SWITCHER (TAGLISH | ENGLISH) -->
+                    <div class="inline-flex items-center border-2 border-tinta bg-dyaryo-paper p-0.5">
+                        <span class="px-1.5 text-[10px] text-tinta-muted hidden sm:inline">LANG:</span>
+                        <button type="button" onclick="setLanguageMode('taglish')" id="langBtnTaglish"
+                                class="px-2 py-0.5 text-[11px] font-bold bg-tinta text-dyaryo transition">
+                            TAGLISH
+                        </button>
+                        <button type="button" onclick="setLanguageMode('english')" id="langBtnEnglish"
+                                class="px-2 py-0.5 text-[11px] font-bold text-tinta hover:bg-yolk/30 transition">
+                            ENGLISH
+                        </button>
+                    </div>
+
+                    <button onclick="openPhotoImporterModal()" class="underline hover:text-pulangtatak font-bold flex items-center gap-1 px-1" title="Paste custom photo from FB or Google Maps">
+                        <i class="fa-solid fa-camera"></i>
+                        <span data-i18n="navChangePhoto">Change Photos (Ctrl+V)</span>
+                    </button>
+
+                    <button onclick="openMyReservationsModal()" class="bg-pulangtatak text-white px-2.5 py-1 border border-tinta flex items-center gap-1.5 hover:bg-tinta transition">
+                        <i class="fa-solid fa-ticket"></i>
+                        <span data-i18n="navMyPass">My Reservations</span> (<span id="savedPassCountBadge">0</span>)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Broadsheet Masthead Title Row -->
+            <div class="py-3 sm:py-4 grid grid-cols-1 lg:grid-cols-12 items-center gap-3 border-b-2 border-tinta">
+                
+                <!-- Left Ear Box: Location & Hours -->
+                <div class="hidden lg:block lg:col-span-3 dyaryo-box-flat p-2.5 text-xs leading-snug">
+                    <div class="font-mono font-bold uppercase text-pulangtatak border-b border-tinta pb-0.5 mb-1">
+                        📍 OPEN DAILY: 5:00 PM – 1:00 AM
+                    </div>
+                    <p class="font-bold text-tinta">1008 Maceda St., Sampaloc, Manila</p>
+                    <p class="text-[11px] text-tinta-muted font-mono">★ 3.9 GOOGLE MAPS • FREE RESERVATION</p>
+                </div>
+
+                <!-- Center Newspaper Title -->
+                <div class="lg:col-span-6 text-center">
+                    <p class="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-tinta-muted font-bold" data-i18n="mastheadKicker">
+                        THE MACEDA CHRONICLE • ANG PAHAYAGANG MACEDA
+                    </p>
+                    <h1 class="font-masthead text-4xl sm:text-6xl text-tinta leading-none tracking-normal my-1">
+                        Silugan sa Maceda
+                    </h1>
+                    <p class="text-xs sm:text-sm italic font-medium text-tinta-muted mb-1.5" data-i18n="mastheadSub">
+                        Ang Opisyal na Pahayagan ng Silugan sa Maceda • Late-Night Kanto Grill & Silog House
+                    </p>
+                    <div class="inline-flex flex-wrap items-center justify-center gap-2 bg-tinta text-dyaryo font-mono text-[10px] sm:text-xs px-3 py-0.5 uppercase font-bold">
+                        <span>★ 2 CUPS GARLIC RICE (DOUBLE SINANGAG)</span>
+                        <span>•</span>
+                        <span data-i18n="mastheadFreebies">FREE KANGKONG, OKRA & BAGOONG</span>
+                    </div>
+                </div>
+
+                <!-- Right Ear Box: Live Status & Rating -->
+                <div class="hidden lg:block lg:col-span-3 dyaryo-box-flat p-2.5 text-xs leading-snug text-right">
+                    <div class="font-mono font-bold uppercase text-dahon border-b border-tinta pb-0.5 mb-1 flex items-center justify-end gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-dahon animate-ping"></span>
+                        <span data-i18n="earRightStatus">OPEN TONIGHT • TABLES AVAILABLE</span>
+                    </div>
+                    <p class="font-bold text-tinta" data-i18n="earRightPrice">Budget-Friendly Meals: ₱95 – ₱150</p>
+                    <p class="text-[11px] text-tinta-muted" data-i18n="earRightPay">Pay at the Counter (Cash / GCash Accepted)</p>
+                </div>
+            </div>
+
+            <!-- Front-Page Headline Banner -->
+            <div class="pt-3 pb-1 text-center border-b border-tinta/30">
+                <div class="inline-block bg-pulangtatak text-white font-mono text-[10px] sm:text-xs font-bold px-2.5 py-0.5 uppercase mb-1" data-i18n="headlineBadge">
+                    TONIGHT'S FRONT PAGE • ONLINE TABLE BOOKING & PRE-ORDER
+                </div>
+                <h2 class="font-headline text-2xl sm:text-4xl md:text-5xl uppercase text-tinta tracking-wide leading-none" data-i18n="mainHeadline">
+                    SKIP THE LONG LINE! RESERVE YOUR TABLE & PRE-ORDER SILOG
+                </h2>
+                <p class="text-xs sm:text-base text-tinta-muted font-medium max-w-3xl mx-auto mt-1" data-i18n="mainSubheadline">
+                    "Huwag nang pumila nang matagal sa Maceda — book your table and pre-order your silog meals below so everything is hot and ready when you arrive!"
+                </p>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- =================================================================== -->
+    <!-- 2. FRONT PAGE RESERVATION DESK (STEPS 1 TO 4 + STICKY COUPON)       -->
+    <!-- =================================================================== -->
+    <main class="max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+            
+            <!-- =========================================================== -->
+            <!-- LEFT BROADSHEET COLUMN (7 Cols): STEPS 1 TO 3               -->
+            <!-- =========================================================== -->
+            <div class="lg:col-span-7 space-y-6">
+
+                <!-- ------------------------------------------------------- -->
+                <!-- STEP 1: DATE, TIME & PARTY SIZE                         -->
+                <!-- ------------------------------------------------------- -->
+                <section class="dyaryo-box p-4 sm:p-6">
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b-2 border-tinta">
+                        <div class="flex items-center gap-2.5">
+                            <span class="bg-tinta text-dyaryo font-headline text-xl sm:text-2xl px-3 py-0.5 tracking-wider">
+                                STEP 1
+                            </span>
+                            <div>
+                                <h3 class="font-headline text-2xl sm:text-3xl uppercase text-tinta leading-none tracking-wide" data-i18n="step1Title">
+                                    DATE, TIME & PARTY SIZE
+                                </h3>
+                                <p class="text-xs sm:text-sm text-tinta-muted font-semibold" data-i18n="step1Sub">
+                                    Kailan at Ilan Kayo Kakain? Choose your arrival date, number of guests, and time slot.
+                                </p>
+                            </div>
+                        </div>
+                        <span class="font-mono text-[11px] font-bold bg-yolk/30 border border-tinta px-2 py-0.5 uppercase">
+                            STEP 1 OF 4
+                        </span>
+                    </div>
+
+                    <!-- Row A: Date Picker + Number of Guests -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 pb-5 border-b border-dashed border-tinta">
+                        
+                        <!-- Date Picker + Quick Buttons (6 Cols) -->
+                        <div class="md:col-span-6">
+                            <label for="resDateInput" class="block font-mono text-xs font-bold uppercase text-tinta mb-1.5" data-i18n="labelDate">
+                                📅 1A. SELECT DATE (PETSA NG PAGPUNTA):
+                            </label>
+                            <input type="date" id="resDateInput" onchange="handleDateChange()"
+                                   class="w-full bg-dyaryo border-2 border-tinta px-3 py-2 font-mono text-sm font-bold text-tinta focus:outline-none focus:bg-white">
+                            <div class="flex gap-1.5 mt-2">
+                                <button type="button" onclick="setQuickDate(0)" id="quickDateTodayBtn"
+                                        class="flex-1 font-mono text-[11px] font-bold py-1.5 px-2 border border-tinta bg-tinta text-dyaryo">
+                                    Tonight (Nov 6)
+                                </button>
+                                <button type="button" onclick="setQuickDate(1)" id="quickDateTomorrowBtn"
+                                        class="flex-1 font-mono text-[11px] font-bold py-1.5 px-2 border border-tinta bg-dyaryo hover:bg-dyaryo-aged text-tinta">
+                                    Tomorrow (Nov 7)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Party Size / Guest Counter (6 Cols) -->
+                        <div class="md:col-span-6">
+                            <label class="block font-mono text-xs font-bold uppercase text-tinta mb-1.5" data-i18n="labelPax">
+                                👥 1B. NUMBER OF GUESTS (ILANG PAX):
+                            </label>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="adjustPax(-1)"
+                                        class="dyaryo-btn bg-dyaryo w-11 h-10 font-mono text-lg font-bold flex items-center justify-center">
+                                    −
+                                </button>
+                                <div class="flex-1 bg-dyaryo border-2 border-tinta h-10 flex items-center justify-center font-mono text-sm sm:text-base font-bold text-tinta">
+                                    <span id="paxCountDisplay">2 Pax (Couple / Duo)</span>
+                                </div>
+                                <button type="button" onclick="adjustPax(1)"
+                                        class="dyaryo-btn bg-yolk w-11 h-10 font-mono text-lg font-bold flex items-center justify-center">
+                                    +
+                                </button>
+                            </div>
+                            <!-- Quick Pax Presets -->
+                            <div class="grid grid-cols-4 gap-1.5 mt-2 font-mono text-[11px]">
+                                <button type="button" onclick="setExactPax(1)" class="border border-tinta py-1 bg-dyaryo hover:bg-yolk/40 font-bold">1 Pax</button>
+                                <button type="button" onclick="setExactPax(2)" class="border border-tinta py-1 bg-dyaryo hover:bg-yolk/40 font-bold">2 Pax</button>
+                                <button type="button" onclick="setExactPax(4)" class="border border-tinta py-1 bg-dyaryo hover:bg-yolk/40 font-bold">4 Pax</button>
+                                <button type="button" onclick="setExactPax(6)" class="border border-tinta py-1 bg-dyaryo hover:bg-yolk/40 font-bold">6 Pax Barkada</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row B: Interactive Arrival Time Slot Grid (Every 30 Mins, 5:00 PM - 12:30 AM) -->
+                    <div class="pt-4">
+                        <div class="flex flex-wrap items-center justify-between gap-1 mb-2.5">
+                            <label class="font-mono text-xs font-bold uppercase text-tinta" data-i18n="labelTimeSlot">
+                                ⏰ 1C. CHOOSE ARRIVAL TIME (5:00 PM – 12:30 AM):
+                            </label>
+                            <span class="font-mono text-[11px] text-dahon font-bold" data-i18n="labelTimeHint">
+                                ● Live Table Availability Shown Below
+                            </span>
+                        </div>
+
+                        <div id="timeSlotsContainer" class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                            <!-- Populated via JS -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ------------------------------------------------------- -->
+                <!-- STEP 2: CHOOSE YOUR SEATING ZONE (FLOOR PLAN)           -->
+                <!-- ------------------------------------------------------- -->
+                <section class="dyaryo-box p-4 sm:p-6">
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b-2 border-tinta">
+                        <div class="flex items-center gap-2.5">
+                            <span class="bg-tinta text-dyaryo font-headline text-xl sm:text-2xl px-3 py-0.5 tracking-wider">
+                                STEP 2
+                            </span>
+                            <div>
+                                <h3 class="font-headline text-2xl sm:text-3xl uppercase text-tinta leading-none tracking-wide" data-i18n="step2Title">
+                                    CHOOSE YOUR SEATING ZONE
+                                </h3>
+                                <p class="text-xs sm:text-sm text-tinta-muted font-semibold" data-i18n="step2Sub">
+                                    1008 Maceda Interactive Floor Plan — Saan Ninyo Gustong Umupo?
+                                </p>
+                            </div>
+                        </div>
+                        <span class="font-mono text-[11px] font-bold bg-yolk/30 border border-tinta px-2 py-0.5 uppercase">
+                            STEP 2 OF 4
+                        </span>
+                    </div>
+
+                    <!-- Street Orientation Strip -->
+                    <div class="bg-tinta text-dyaryo px-3 py-1.5 font-mono text-[10px] sm:text-[11px] uppercase flex items-center justify-between mb-3">
+                        <span>◄ TOWARDS ESPAÑA BLVD</span>
+                        <span class="text-yolk font-bold">══ 1008 MACEDA ST. SIDEWALK & GRILL COUNTER ══</span>
+                        <span>TOWARDS PNR MACEDA ►</span>
+                    </div>
+
+                    <!-- 3 Interactive Table Zone Cards -->
+                    <div id="tableZonesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                        <!-- Populated via JS -->
+                    </div>
+                </section>
+
+                <!-- ------------------------------------------------------- -->
+                <!-- STEP 3: PRE-ORDER YOUR SILOG MEALS (OPTIONAL)           -->
+                <!-- ------------------------------------------------------- -->
+                <section class="dyaryo-box p-4 sm:p-6">
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b-2 border-tinta">
+                        <div class="flex items-center gap-2.5">
+                            <span class="bg-pulangtatak text-white font-headline text-xl sm:text-2xl px-3 py-0.5 tracking-wider">
+                                STEP 3
+                            </span>
+                            <div>
+                                <h3 class="font-headline text-2xl sm:text-3xl uppercase text-tinta leading-none tracking-wide" data-i18n="step3Title">
+                                    PRE-ORDER YOUR SILOG MEALS (OPTIONAL)
+                                </h3>
+                                <p class="text-xs sm:text-sm text-tinta-muted font-semibold" data-i18n="step3Sub">
+                                    Para Luto Na Pagdating / Ready When You Arrive — Every Silog includes 2 cups garlic rice & free veggies!
+                                </p>
+                            </div>
+                        </div>
+                        <span class="font-mono text-[11px] font-bold bg-yolk/30 border border-tinta px-2 py-0.5 uppercase">
+                            STEP 3 OF 4
+                        </span>
+                    </div>
+
+                    <!-- Dining Mode Toggle: Order Meals Now vs. Decide at the Restaurant -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-4 font-mono text-xs">
+                        <button type="button" onclick="setDiningOrderMode('preorder')" id="modeBtnPreorder"
+                                class="p-2.5 border-2 border-tinta font-bold text-left flex items-center justify-between slot-selected">
+                            <span>🍛 <span data-i18n="modePreorder">Order Meals Now (Fastest Serving)</span></span>
+                            <span class="text-[10px] bg-pulangtatak text-white px-1.5 py-0.5">ACTIVE</span>
+                        </button>
+                        <button type="button" onclick="setDiningOrderMode('tableonly')" id="modeBtnTableOnly"
+                                class="p-2.5 border-2 border-tinta font-bold text-left flex items-center justify-between bg-dyaryo text-tinta hover:bg-dyaryo-aged">
+                            <span>🪑 <span data-i18n="modeTableOnly">Decide at the Restaurant (Table Only)</span></span>
+                            <span class="text-[10px] underline">Select</span>
+                        </button>
+                    </div>
+
+                    <!-- Egg Doneness Selector & Free Side Veggies Toggle -->
+                    <div class="dyaryo-box-flat p-3 mb-4 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="font-mono text-xs font-bold uppercase text-tinta" data-i18n="labelEggPref">
+                                🍳 EGG DONENESS (LUTO NG ITLOG):
+                            </span>
+                            <div class="inline-flex border-2 border-tinta bg-dyaryo font-mono text-xs">
+                                <button type="button" onclick="setGlobalEggPref('Runny Yolk (Malasado)')" id="eggBtnMalasado"
+                                        class="px-2.5 py-1 font-bold bg-tinta text-dyaryo">
+                                    Runny Yolk (Malasado)
+                                </button>
+                                <button type="button" onclick="setGlobalEggPref('Well-Done (Lutong-Luto)')" id="eggBtnWelldone"
+                                        class="px-2.5 py-1 font-bold text-tinta hover:bg-yolk/30">
+                                    Well-Done (Lutong-Luto)
+                                </button>
+                            </div>
+                        </div>
+
+                        <label class="inline-flex items-center gap-2 cursor-pointer font-mono text-xs font-bold text-dahon">
+                            <input type="checkbox" id="freeGulayBagoongCheck" checked onchange="syncCouponSlip()"
+                                   class="w-4 h-4 accent-[#141210]">
+                            <span data-i18n="labelFreeGulay">✓ Include FREE Kangkong, Okra & Bagoong</span>
+                        </label>
+                    </div>
+
+                    <!-- Menu Grid (7 Iconic Silugan sa Maceda Dishes) -->
+                    <div id="dyaryoMenuGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Populated via JS -->
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- =========================================================== -->
+            <!-- RIGHT STICKY COLUMN (5 Cols): STEP 4 + OFFICIAL COUPON PASS -->
+            <!-- =========================================================== -->
+            <div class="lg:col-span-5 lg:sticky lg:top-6">
+                
+                <div class="kupon-cutout p-5 sm:p-6 relative">
+                    
+                    <!-- Scissor Cut-Out Top Line -->
+                    <div class="flex items-center justify-between text-[11px] font-mono font-bold uppercase text-tinta-muted pb-2 mb-3 border-b-2 border-tinta">
+                        <span data-i18n="couponCutHeader">✂️ CLIP & SAVE THIS RESERVATION PASS</span>
+                        <span class="text-dahon font-bold" data-i18n="couponNoFee">FREE BOOKING</span>
+                    </div>
+
+                    <!-- Coupon Title & Stamp -->
+                    <div class="flex items-start justify-between gap-2 pb-3 mb-4 border-b-2 border-double border-tinta">
+                        <div>
+                            <h3 class="font-headline text-3xl uppercase text-tinta leading-none tracking-wide" data-i18n="couponMainTitle">
+                                OFFICIAL RESERVATION COUPON
+                            </h3>
+                            <p class="text-xs font-semibold text-tinta-muted mt-0.5" data-i18n="couponSubTitle">
+                                Opisyal na Kupon ng Mesa • 1008 Maceda St., Sampaloc
+                            </p>
+                        </div>
+                        <div class="rubber-stamp px-2 py-0.5 font-mono text-[10px] font-bold shrink-0">
+                            1008 MACEDA
+                        </div>
+                    </div>
+
+                    <!-- LIVE RESERVATION SUMMARY TABLE -->
+                    <div class="bg-dyaryo border-2 border-tinta p-3.5 mb-4 space-y-2 font-mono text-xs">
+                        <div class="flex justify-between items-center border-b border-tinta/20 pb-1.5">
+                            <span class="text-tinta-muted uppercase" data-i18n="sumDateTime">DATE & ARRIVAL TIME:</span>
+                            <strong id="slipDateTime" class="text-pulangtatak text-sm font-bold text-right">Tonight (Nov 6) @ 7:30 PM</strong>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-tinta/20 pb-1.5">
+                            <span class="text-tinta-muted uppercase" data-i18n="sumGuests">GUESTS (PAX):</span>
+                            <strong id="slipPax" class="text-tinta text-sm font-bold">2 Pax (Couple / Duo)</strong>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-tinta/20 pb-1.5">
+                            <span class="text-tinta-muted uppercase" data-i18n="sumZone">SEATING ZONE:</span>
+                            <strong id="slipTableZone" class="text-tinta font-bold text-right">Zone A: Outdoor Street-Side</strong>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-tinta-muted uppercase" data-i18n="sumEgg">EGG DONENESS:</span>
+                            <strong id="slipEggPref" class="text-tinta font-bold">Runny Yolk (Malasado)</strong>
+                        </div>
+                    </div>
+
+                    <!-- PRE-ORDERED SILOG LIST IN COUPON -->
+                    <div class="mb-4">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <span class="font-mono text-xs font-bold uppercase text-tinta" data-i18n="sumMealsHeader">
+                                🍛 PRE-ORDERED MEALS (ULAM SA MESA):
+                            </span>
+                            <span id="slipItemCount" class="font-mono text-[11px] font-bold bg-tinta text-dyaryo px-2 py-0.5">
+                                1 Item
+                            </span>
+                        </div>
+
+                        <div id="slipOrderItemsContainer" class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+                            <!-- Populated via JS -->
+                        </div>
+
+                        <!-- Total Bill Bar -->
+                        <div class="mt-3 pt-2.5 border-t-2 border-tinta flex items-baseline justify-between">
+                            <div>
+                                <span class="font-mono text-xs font-bold uppercase text-tinta block" data-i18n="sumTotalLabel">
+                                    ESTIMATED BILL AT COUNTER:
+                                </span>
+                                <span class="text-[11px] text-tinta-muted italic" data-i18n="sumPayNote">
+                                    Pay upon arrival — Cash or GCash accepted
+                                </span>
+                            </div>
+                            <strong id="slipGrandTotal" class="font-headline text-3xl text-pulangtatak tracking-wide">
+                                ₱150
+                            </strong>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: GUEST DETAILS FORM -->
+                    <div class="pt-3 border-t-2 border-dashed border-tinta space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-mono text-xs font-bold uppercase text-tinta" data-i18n="step4Header">
+                                ✍️ STEP 4: GUEST DETAILS (CONTACT INFO)
+                            </span>
+                            <span class="font-mono text-[10px] font-bold bg-yolk/30 border border-tinta px-1.5 py-0.5">
+                                STEP 4 OF 4
+                            </span>
+                        </div>
+
+                        <!-- Validation Alert -->
+                        <div id="couponFormError" class="hidden bg-pulangtatak text-white font-mono text-xs font-bold p-2.5 border-2 border-tinta">
+                            ⚠️ Please enter your Full Name / Nickname and Mobile Number to confirm your table.
+                        </div>
+
+                        <div>
+                            <label for="customerNameInput" class="block font-mono text-[11px] font-bold uppercase text-tinta mb-1" data-i18n="labelName">
+                                Full Name / Nickname (Pangalan) *
+                            </label>
+                            <input type="text" id="customerNameInput" placeholder="e.g. Juan dela Cruz / Barkada ni Marco"
+                                   class="w-full bg-white border-2 border-tinta px-3 py-2 font-mono text-xs sm:text-sm font-bold text-tinta focus:outline-none focus:bg-yolk/15">
+                        </div>
+
+                        <div>
+                            <label for="customerPhoneInput" class="block font-mono text-[11px] font-bold uppercase text-tinta mb-1" data-i18n="labelPhone">
+                                Mobile Number (09XX-XXX-XXXX) *
+                            </label>
+                            <input type="tel" id="customerPhoneInput" placeholder="e.g. 0917-123-4567"
+                                   class="w-full bg-white border-2 border-tinta px-3 py-2 font-mono text-xs sm:text-sm font-bold text-tinta focus:outline-none focus:bg-yolk/15">
+                        </div>
+
+                        <!-- Special Requests (Quick Tags + Optional Input) -->
+                        <div>
+                            <span class="block font-mono text-[11px] font-bold uppercase text-tinta mb-1.5" data-i18n="labelRequests">
+                                Special Requests (Optional — Click to Add):
+                            </span>
+                            <div class="grid grid-cols-2 gap-1.5 font-mono text-[11px] mb-2">
+                                <label class="flex items-center gap-1.5 bg-dyaryo border border-tinta px-2 py-1.5 cursor-pointer hover:bg-yolk/20">
+                                    <input type="checkbox" value="Extra Bagoong & Calamansi" class="req-check accent-[#B82920]" checked>
+                                    <span>+ Extra Bagoong & Calamansi</span>
+                                </label>
+                                <label class="flex items-center gap-1.5 bg-dyaryo border border-tinta px-2 py-1.5 cursor-pointer hover:bg-yolk/20">
+                                    <input type="checkbox" value="Spicy Sili (Chili)" class="req-check accent-[#B82920]">
+                                    <span>+ Spicy Sili</span>
+                                </label>
+                                <label class="flex items-center gap-1.5 bg-dyaryo border border-tinta px-2 py-1.5 cursor-pointer hover:bg-yolk/20">
+                                    <input type="checkbox" value="Serve All Together" class="req-check accent-[#B82920]" checked>
+                                    <span>+ Serve All Together</span>
+                                </label>
+                                <label class="flex items-center gap-1.5 bg-dyaryo border border-tinta px-2 py-1.5 cursor-pointer hover:bg-yolk/20">
+                                    <input type="checkbox" value="High Chair / Senior Friendly" class="req-check accent-[#B82920]">
+                                    <span>+ Senior / Kid Friendly</span>
+                                </label>
+                            </div>
+                            <input type="text" id="customNotesInput" placeholder="Other notes (e.g. arriving via Angkas, extra soup...)"
+                                   class="w-full bg-white border border-tinta px-2.5 py-1.5 font-mono text-xs text-tinta focus:outline-none">
+                        </div>
+
+                        <!-- Primary CTA Button -->
+                        <button type="button" onclick="submitDyaryoReservation()"
+                                class="w-full dyaryo-btn bg-pulangtatak hover:bg-tinta text-white font-headline text-2xl uppercase tracking-wider py-3.5 px-4 flex flex-col items-center justify-center leading-tight mt-2">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-stamp text-yolk"></i>
+                                <span data-i18n="ctaConfirmMain">CONFIRM TABLE RESERVATION</span>
+                            </div>
+                            <span class="font-mono text-[10px] text-yolk-light font-normal tracking-normal" data-i18n="ctaConfirmSub">
+                                I-Tatak ang Reserbasyon • Instant QR Coupon Pass
+                            </span>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- 3. COMPACT LOCATION & LIVE GOOGLE MAP STRIP (1008 MACEDA ST.)   -->
+        <!-- =============================================================== -->
+        <section class="mt-8 dyaryo-box p-4 sm:p-5">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+                <div class="lg:col-span-5 space-y-2">
+                    <span class="bg-tinta text-dyaryo font-mono text-[10px] font-bold px-2 py-0.5 uppercase">
+                        📍 LOCATION & DIRECTIONS • SAMPALOC, MANILA
+                    </span>
+                    <h3 class="font-headline text-2xl sm:text-3xl uppercase text-tinta leading-none">
+                        FIND US AT 1008 MACEDA ST., SAMPALOC
+                    </h3>
+                    <p class="text-xs sm:text-sm text-tinta-muted leading-relaxed" data-i18n="mapDesc">
+                        Conveniently located near España Blvd and PNR Maceda Station. Show your digital QR Reservation Coupon at the counter upon arrival!
+                    </p>
+                    <div class="pt-1 flex flex-wrap gap-2 font-mono text-xs">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Silugan+sa+Maceda+1008+Maceda+St+Sampaloc+Manila"
+                           target="_blank" rel="noopener noreferrer"
+                           class="dyaryo-btn bg-yolk text-tinta font-bold px-3.5 py-2 inline-flex items-center gap-1.5">
+                            <i class="fa-solid fa-location-arrow"></i>
+                            <span data-i18n="btnOpenMaps">Get Directions on Google Maps</span>
+                        </a>
+                        <button type="button" onclick="openMyReservationsModal()"
+                                class="dyaryo-btn bg-dyaryo text-tinta font-bold px-3.5 py-2 inline-flex items-center gap-1.5">
+                            <i class="fa-solid fa-qrcode"></i>
+                            <span data-i18n="btnViewSavedPass">View My Saved Pass</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 border-2 border-tinta h-48 sm:h-56 overflow-hidden bg-dyaryo-dark">
+                    <iframe 
+                        title="Silugan sa Maceda Google Map"
+                        src="https://www.google.com/maps?q=1008+Maceda+St,+Sampaloc,+Manila&output=embed"
+                        class="w-full h-full border-0 filter contrast-105"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- 4. COMPACT DYARYO FOOTER                                            -->
+    <!-- =================================================================== -->
+    <footer class="border-t-4 border-double border-tinta bg-dyaryo-dark py-4 px-4 mt-6">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-xs text-tinta-muted">
+            <div>
+                <strong class="text-tinta">THE MACEDA CHRONICLE • SILUGAN SA MACEDA</strong> — 1008 Maceda St., Sampaloc, Manila • Open Daily 5:00 PM – 1:00 AM
+            </div>
+            <div>
+                <span>Bilingual Edition: </span>
+                <button onclick="setLanguageMode('taglish')" class="underline font-bold text-tinta hover:text-pulangtatak">Taglish</button>
+                <span> / </span>
+                <button onclick="setLanguageMode('english')" class="underline font-bold text-tinta hover:text-pulangtatak">English</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =================================================================== -->
+    <!-- MODAL 1: OFFICIAL STAMPED RESERVATION COUPON & QR PASS              -->
+    <!-- =================================================================== -->
+    <div id="officialPassModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="kupon-cutout max-w-md w-full p-5 sm:p-6 bg-dyaryo-paper relative max-h-[92vh] overflow-y-auto">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between pb-2 mb-3 border-b-2 border-tinta font-mono text-xs">
+                <span class="font-bold uppercase text-pulangtatak">✂️ OFFICIAL RESERVATION PASS • KUPON NG MESA</span>
+                <button onclick="closeOfficialPassModal()" class="w-7 h-7 bg-tinta text-dyaryo font-bold">✕</button>
+            </div>
+
+            <!-- Stamp & Headline -->
+            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b-2 border-double border-tinta">
+                <div>
+                    <span class="font-mono text-[10px] uppercase font-bold text-tinta-muted block">1008 MACEDA ST., SAMPALOC</span>
+                    <h3 class="font-masthead text-3xl text-tinta leading-none">Silugan sa Maceda</h3>
+                </div>
+                <div class="rubber-stamp-green px-2.5 py-1 font-mono text-[11px] font-bold">
+                    CONFIRMED • RESERVED
+                </div>
+            </div>
+
+            <!-- Reference Number & QR Code Box -->
+            <div class="bg-dyaryo border-2 border-tinta p-3.5 mb-3 flex items-center justify-between gap-3">
+                <div>
+                    <span class="font-mono text-[10px] uppercase text-tinta-muted block">RESERVATION REF CODE:</span>
+                    <strong id="modalRefCode" class="font-mono text-2xl font-bold text-pulangtatak block">SSM-2026-1008</strong>
+                    <span id="modalTableBadge" class="inline-block mt-1 bg-tinta text-dyaryo font-mono text-[11px] font-bold px-2 py-0.5">
+                        Zone A: Outdoor Street-Side
+                    </span>
+                </div>
+                <div class="bg-white p-1.5 border-2 border-tinta shrink-0">
+                    <img id="modalQrImg" src="" alt="QR Reservation Pass" class="w-20 h-20">
+                </div>
+            </div>
+
+            <!-- Complete Pass Details Breakdown -->
+            <div id="modalPassDetails" class="font-mono text-xs space-y-1.5 bg-dyaryo-dark/60 p-3.5 border border-tinta mb-4">
+                <!-- Populated via JS -->
+            </div>
+
+            <!-- Pass Actions -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-xs">
+                <button onclick="copyOfficialPassText()" class="dyaryo-btn bg-yolk text-tinta font-bold py-2.5 px-3 flex items-center justify-center gap-1.5">
+                    <i class="fa-regular fa-copy"></i>
+                    <span id="copyPassBtnText">Copy Summary for Messenger/SMS</span>
+                </button>
+                <button onclick="window.print()" class="dyaryo-btn bg-tinta text-dyaryo font-bold py-2.5 px-3 flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-print"></i>
+                    <span>Print / Save Pass</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- MODAL 2: MY SAVED RESERVATIONS TRACKER                              -->
+    <!-- =================================================================== -->
+    <div id="myReservationsModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="dyaryo-box max-w-lg w-full p-5 bg-dyaryo-paper max-h-[85vh] flex flex-col">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b-2 border-tinta">
+                <h3 class="font-headline text-2xl uppercase text-tinta tracking-wide">MY SAVED RESERVATIONS (MGA KUPON KO)</h3>
+                <button onclick="closeMyReservationsModal()" class="w-7 h-7 bg-tinta text-dyaryo font-mono font-bold">✕</button>
+            </div>
+            <div id="myReservationsList" class="space-y-2.5 overflow-y-auto flex-1 font-mono text-xs">
+                <!-- Populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- MODAL 3: CTRL+V PHOTO PASTER (FROM FACEBOOK OR GOOGLE MAPS)         -->
+    <!-- =================================================================== -->
+    <div id="photoImporterModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="dyaryo-box max-w-md w-full p-5 bg-dyaryo-paper">
+            <div class="flex items-center justify-between pb-2 mb-3 border-b-2 border-tinta">
+                <div>
+                    <span class="font-mono text-[10px] font-bold uppercase text-pulangtatak block">CUSTOM FB / GOOGLE MAPS PHOTO TOOL</span>
+                    <h3 class="font-headline text-2xl uppercase text-tinta">CHANGE DISH PHOTO (CTRL+V)</h3>
+                </div>
+                <button onclick="closePhotoImporterModal()" class="w-7 h-7 bg-tinta text-dyaryo font-mono font-bold">✕</button>
+            </div>
+
+            <div class="space-y-3 font-mono text-xs">
+                <div>
+                    <label class="block font-bold uppercase mb-1">1. Select Menu Item:</label>
+                    <select id="photoTargetSelect" class="w-full bg-dyaryo border-2 border-tinta p-2 font-bold">
+                        <!-- Populated via JS -->
+                    </select>
+                </div>
+
+                <div class="border-2 border-dashed border-pulangtatak bg-dyaryo p-4 text-center">
+                    <p class="font-bold text-tinta">
+                        Right-click "Copy Image" from Facebook or Google Maps, then press <span class="bg-tinta text-dyaryo px-1.5 py-0.5">CTRL + V</span> anywhere in this window!
+                    </p>
+                    <img id="pastedPhotoPreview" src="" alt="Preview" class="hidden mx-auto mt-2.5 h-32 border-2 border-tinta object-cover">
+                </div>
+
+                <div>
+                    <label class="block font-bold uppercase mb-1">Or Upload Photo from Device:</label>
+                    <input type="file" accept="image/*" onchange="handleFileUploadPreview(event)"
+                           class="w-full bg-dyaryo border border-tinta p-1.5 text-[11px]">
+                </div>
+
+                <div class="flex gap-2 pt-2">
+                    <button type="button" onclick="applyCustomDishPhoto()" class="flex-1 dyaryo-btn bg-pulangtatak text-white font-bold py-2.5 uppercase">
+                        Save Photo to Menu
+                    </button>
+                    <button type="button" onclick="resetDishPhotos()" class="dyaryo-btn bg-dyaryo text-tinta font-bold px-3 py-2.5">
+                        Reset Default
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST BANNER -->
+    <div id="dyaryoToast" class="fixed bottom-4 right-4 z-50 hidden dyaryo-box bg-tinta text-dyaryo px-4 py-2.5 font-mono text-xs font-bold flex items-center gap-2">
+        <span class="text-yolk">★</span>
+        <span id="dyaryoToastText">Reservation coupon updated!</span>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- JAVASCRIPT: BILINGUAL ENGINE, FLOOR PLAN & COUPON GENERATOR         -->
+    <!-- =================================================================== -->
+    <script>
+        const STORAGE_KEY_PHOTOS = 'maceda_bilingual_photos_v5';
+        const STORAGE_KEY_PASSES = 'maceda_bilingual_passes_v5';
+
+        let currentLang = 'taglish'; // 'taglish' | 'english'
+
+        // Dictionary for 1-Click Taglish / English Toggle
+        const I18N_DICTIONARY = {
+            taglish: {
+                navChangePhoto: "Change Photos (Ctrl+V)",
+                navMyPass: "My Reservations",
+                mastheadKicker: "THE MACEDA CHRONICLE • ANG PAHAYAGANG MACEDA",
+                mastheadSub: "Ang Opisyal na Pahayagan ng Silugan sa Maceda • Late-Night Kanto Grill & Silog House",
+                mastheadFreebies: "FREE KANGKONG, OKRA & BAGOONG",
+                earRightStatus: "OPEN TONIGHT • TABLES AVAILABLE",
+                earRightPrice: "Sulit Meals: ₱95 – ₱150",
+                earRightPay: "Pay at the Counter (Cash / GCash Accepted)",
+                headlineBadge: "TONIGHT'S FRONT PAGE • ONLINE TABLE BOOKING & PRE-ORDER",
+                mainHeadline: "SKIP THE LONG LINE! RESERVE YOUR TABLE & PRE-ORDER SILOG",
+                mainSubheadline: "\"Huwag nang pumila nang matagal sa Maceda — i-book na ang table at ulam ninyo bago dumating para mainit at luto agad!\"",
+                step1Title: "DATE, TIME & PARTY SIZE",
+                step1Sub: "Kailan at Ilan Kayo Kakain? Choose your date, guest count, and arrival time.",
+                labelDate: "📅 1A. SELECT DATE (PETSA NG PAGPUNTA):",
+                labelPax: "👥 1B. NUMBER OF GUESTS (ILANG PAX):",
+                labelTimeSlot: "⏰ 1C. ARRIVAL TIME SLOT (5:00 PM – 12:30 AM):",
+                labelTimeHint: "● Live Table Availability (Ilang Table Pa ang Bakante)",
+                step2Title: "CHOOSE YOUR SEATING ZONE",
+                step2Sub: "1008 Maceda Interactive Floor Plan — Saan Ninyo Gustong Umupo?",
+                step3Title: "PRE-ORDER YOUR SILOG MEALS (OPTIONAL)",
+                step3Sub: "Para Luto Na Pagdating / Ready When You Arrive — With 2 cups garlic rice & free veggies!",
+                modePreorder: "Order Meals Now (Luto Agad Pagdating)",
+                modeTableOnly: "Decide at the Restaurant (Table Only)",
+                labelEggPref: "🍳 EGG DONENESS (LUTO NG ITLOG):",
+                labelFreeGulay: "✓ Include FREE Kangkong, Okra & Bagoong",
+                couponCutHeader: "✂️ CLIP & SAVE THIS RESERVATION PASS",
+                couponNoFee: "NO BOOKING FEE",
+                couponMainTitle: "OFFICIAL RESERVATION COUPON",
+                couponSubTitle: "Opisyal na Kupon ng Mesa • 1008 Maceda St., Sampaloc",
+                sumDateTime: "DATE & ARRIVAL TIME:",
+                sumGuests: "GUESTS (PAX):",
+                sumZone: "SEATING ZONE:",
+                sumEgg: "EGG DONENESS:",
+                sumMealsHeader: "🍛 PRE-ORDERED MEALS (ULAM SA MESA):",
+                sumTotalLabel: "ESTIMATED BILL AT COUNTER:",
+                sumPayNote: "Sa counter na ang bayad pagdating (Cash / GCash)",
+                step4Header: "✍️ STEP 4: GUEST DETAILS (CONTACT INFO)",
+                labelName: "Full Name / Nickname (Pangalan) *",
+                labelPhone: "Mobile Number (09XX-XXX-XXXX) *",
+                labelRequests: "Special Requests (Optional — Click to Add):",
+                ctaConfirmMain: "CONFIRM TABLE RESERVATION",
+                ctaConfirmSub: "I-Tatak ang Reserbasyon • Instant QR Coupon Pass",
+                mapDesc: "Malapit sa España Blvd at PNR Maceda Station. Ipakita lang ang QR Reservation Coupon sa counter pagdating!",
+                btnOpenMaps: "Get Directions on Google Maps",
+                btnViewSavedPass: "View My Saved Pass"
+            },
+            english: {
+                navChangePhoto: "Change Photos (Ctrl+V)",
+                navMyPass: "My Reservations",
+                mastheadKicker: "THE MACEDA CHRONICLE • MANILA NIGHT EDITION",
+                mastheadSub: "The Official Broadsheet of Silugan sa Maceda • Late-Night Street Grill & Silog Diner",
+                mastheadFreebies: "FREE BLANCHED GREENS, OKRA & SHRIMP PASTE",
+                earRightStatus: "OPEN TONIGHT • WALK-IN & BOOKINGS OPEN",
+                earRightPrice: "Value Meals: ₱95 – ₱150",
+                earRightPay: "Pay Upon Arrival (Cash or GCash Accepted)",
+                headlineBadge: "FRONT PAGE EXCLUSIVE • INSTANT TABLE RESERVATION & PRE-ORDER",
+                mainHeadline: "SKIP THE LONG LINE! RESERVE YOUR TABLE & PRE-ORDER SILOG",
+                mainSubheadline: "\"Beat the dinner rush at 1008 Maceda — book your table and pre-order your silog meals below so everything is hot and ready when you arrive!\"",
+                step1Title: "DATE, TIME & PARTY SIZE",
+                step1Sub: "Select your preferred date, number of guests, and arrival time slot.",
+                labelDate: "📅 1A. RESERVATION DATE:",
+                labelPax: "👥 1B. NUMBER OF GUESTS (PAX):",
+                labelTimeSlot: "⏰ 1C. SELECT ARRIVAL TIME (5:00 PM – 12:30 AM):",
+                labelTimeHint: "● Live Table Availability Shown Below",
+                step2Title: "CHOOSE YOUR SEATING ZONE",
+                step2Sub: "1008 Maceda Interactive Floor Plan — Select where your group prefers to sit.",
+                step3Title: "PRE-ORDER YOUR SILOG MEALS (OPTIONAL)",
+                step3Sub: "Ready When You Arrive — Every Silog Overload includes 2 cups garlic rice, fried egg & free side veggies!",
+                modePreorder: "Order Meals Now (Fastest Serving)",
+                modeTableOnly: "Decide at the Restaurant (Table Only)",
+                labelEggPref: "🍳 EGG DONENESS PREFERENCE:",
+                labelFreeGulay: "✓ Include FREE Blanched Kangkong, Okra & Bagoong",
+                couponCutHeader: "✂️ CLIP & SAVE THIS RESERVATION PASS",
+                couponNoFee: "FREE RESERVATION",
+                couponMainTitle: "OFFICIAL RESERVATION COUPON",
+                couponSubTitle: "Verified Table Pass • 1008 Maceda St., Sampaloc, Manila",
+                sumDateTime: "DATE & ARRIVAL TIME:",
+                sumGuests: "NUMBER OF GUESTS:",
+                sumZone: "SEATING ZONE:",
+                sumEgg: "EGG PREFERENCE:",
+                sumMealsHeader: "🍛 PRE-ORDERED MEALS BREAKDOWN:",
+                sumTotalLabel: "ESTIMATED BILL AT COUNTER:",
+                sumPayNote: "Pay upon arrival — Cash or GCash accepted",
+                step4Header: "✍️ STEP 4: GUEST CONTACT DETAILS",
+                labelName: "Full Name or Nickname *",
+                labelPhone: "Mobile Number (09XX-XXX-XXXX) *",
+                labelRequests: "Special Requests (Optional — Click to Add):",
+                ctaConfirmMain: "CONFIRM TABLE RESERVATION",
+                ctaConfirmSub: "Generate Instant Stamped Pass & QR Code",
+                mapDesc: "Conveniently located near España Blvd and PNR Maceda Station. Present your digital QR Reservation Pass at the counter upon arrival!",
+                btnOpenMaps: "Get Directions on Google Maps",
+                btnViewSavedPass: "View My Saved Pass"
+            }
+        };
+
+        // 1. Arrival Time Slots (Every 30 mins from 5:00 PM to 12:30 AM)
+        const TIME_SLOTS_DATA = [
+            { time: "5:00 PM", statusEn: "6 tables left", statusTl: "Early Dinner • 6 tables left" },
+            { time: "5:30 PM", statusEn: "6 tables left", statusTl: "Maluwag Pa • 6 tables left" },
+            { time: "6:00 PM", statusEn: "5 tables left", statusTl: "Dinner Time • 5 tables left" },
+            { time: "6:30 PM", statusEn: "4 tables left", statusTl: "Filling Up • 4 tables left" },
+            { time: "7:00 PM", statusEn: "Peak • 3 left", statusTl: "Peak Hour • 3 tables left" },
+            { time: "7:30 PM", statusEn: "Peak • 2 left", statusTl: "Peak Hour • 2 tables left" },
+            { time: "8:00 PM", statusEn: "Peak • 2 left", statusTl: "Peak Hour • 2 tables left" },
+            { time: "8:30 PM", statusEn: "3 tables left", statusTl: "Patok • 3 tables left" },
+            { time: "9:00 PM", statusEn: "4 tables left", statusTl: "4 tables left" },
+            { time: "9:30 PM", statusEn: "5 tables left", statusTl: "Late Dinner • 5 tables left" },
+            { time: "10:00 PM", statusEn: "5 tables left", statusTl: "Barkada Hours • 5 tables left" },
+            { time: "10:30 PM", statusEn: "6 tables left", statusTl: "6 tables left" },
+            { time: "11:00 PM", statusEn: "6 tables left", statusTl: "Midnight Silog • 6 left" },
+            { time: "11:30 PM", statusEn: "7 tables left", statusTl: "7 tables left" },
+            { time: "12:00 AM", statusEn: "7 tables left", statusTl: "Late Night • 7 left" },
+            { time: "12:30 AM", statusEn: "Last Call • 8 left", statusTl: "Last Call • 8 tables left" }
+        ];
+
+        // 2. Interactive 1008 Maceda Table Zones
+        const TABLE_ZONES_DATA = [
+            {
+                id: "Zone A: Outdoor Street-Side",
+                code: "ZONE A • AL FRESCO",
+                titleTaglish: "Zone A: Outdoor Street-Side (Bangketa Vibe)",
+                titleEn: "Zone A: Outdoor Street-Side (Al Fresco)",
+                capacity: "1–4 Pax",
+                descTaglish: "Best late-night Sampaloc street atmosphere right along 1008 Maceda St.",
+                descEn: "Open-air street-side tables with authentic Manila late-night dining atmosphere.",
+                recommendedMin: 1,
+                recommendedMax: 4
+            },
+            {
+                id: "Zone B: Indoor Counter & Tables",
+                code: "ZONE B • INDOOR DINING",
+                titleTaglish: "Zone B: Indoor Counter & Tables (Sa Loob)",
+                titleEn: "Zone B: Indoor Counter & Tables (Near Grill)",
+                capacity: "1–4 Pax",
+                descTaglish: "Covered dining area right beside the sizzling kitchen — fastest serving!",
+                descEn: "Covered indoor seating right next to the sizzling grill and service counter.",
+                recommendedMin: 1,
+                recommendedMax: 4
+            },
+            {
+                id: "Zone C: Barkada Long Table",
+                code: "ZONE C • GROUP SEATING",
+                titleTaglish: "Zone C: Barkada Long Table (Group Seating)",
+                titleEn: "Zone C: Barkada Long Table (Group Seating)",
+                capacity: "5–10+ Pax",
+                descTaglish: "Joined long tables para sa barkada, classmates, o family night-out.",
+                descEn: "Joined long tables arranged for larger groups, classmates, or family night-outs.",
+                recommendedMin: 5,
+                recommendedMax: 15
+            }
+        ];
+
+        // 3. Complete 7-Item Silugan sa Maceda Menu
+        const INITIAL_SILOG_MENU = [
+            {
+                id: 1,
+                name: "Chicsilog Overload (Bestseller)",
+                price: 150,
+                tag: "#1 BESTSELLER • 2 CUPS RICE",
+                detailsTaglish: "Crispy fried chicken cutlets, 2 cups garlic fried rice, fried egg + FREE blanched kangkong, okra & bagoong.",
+                detailsEn: "Crispy golden fried chicken cutlets, 2 cups toasted garlic rice, fried egg + FREE blanched kangkong greens, okra & savory shrimp paste.",
+                image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 2,
+                name: "Crispy Sisigsilog",
+                price: 135,
+                tag: "CROWD FAVORITE • 2 CUPS RICE",
+                detailsTaglish: "Crunchy pork sisig with calamansi & chili, 2 cups garlic rice, fried egg + free side veggies & bagoong.",
+                detailsEn: "Sizzling crunchy chopped pork sisig with calamansi & chili, 2 cups garlic rice, fried egg + free side veggies.",
+                image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 3,
+                name: "Special Porkchopsilog",
+                price: 130,
+                tag: "DOUBLE RICE OVERLOAD",
+                detailsTaglish: "Golden-fried seasoned porkchop, 2 cups garlic rice, fried egg + free kangkong, okra & bagoong.",
+                detailsEn: "Bone-in golden-fried seasoned porkchop, 2 cups garlic fried rice, fried egg + free kangkong, okra & bagoong.",
+                image: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 4,
+                name: "Cheesy Hungariansilog",
+                price: 140,
+                tag: "JUICY & SMOKY",
+                detailsTaglish: "Juicy smoky Hungarian sausage with cheese, 2 cups garlic rice, fried egg + free side veggies.",
+                detailsEn: "Juicy cheese-filled smoky Hungarian sausage, 2 cups garlic fried rice, fried egg + free side veggies.",
+                image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 5,
+                name: "Classic Tapsilog",
+                price: 130,
+                tag: "MANILA CLASSIC",
+                detailsTaglish: "Sweet-savory marinated beef tapa, 2 cups garlic rice, fried egg + spiced vinegar dip & bagoong.",
+                detailsEn: "Tender sweet-savory cured beef tapa, 2 cups garlic fried rice, fried egg + spiced vinegar dip & free side veggies.",
+                image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 6,
+                name: "Special Pancit Canton (Platter)",
+                price: 95,
+                tag: "GREAT FOR SHARING",
+                detailsTaglish: "Stir-fried canton noodles loaded with meat and crisp vegetables — panalo pang-share sa mesa!",
+                detailsEn: "Savory stir-fried wheat noodles loaded with meat, cabbage, carrots, and calamansi — great for sharing.",
+                image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 7,
+                name: "Extra Sinangag & Iced Gulaman Combo",
+                price: 45,
+                tag: "ADD-ON COMBO",
+                detailsTaglish: "1 extra cup of toasted garlic rice + 16oz cold sweet sago't gulaman drink.",
+                detailsEn: "1 extra cup of toasted garlic fried rice paired with a 16oz chilled sweet gulaman cooler.",
+                image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80"
+            }
+        ];
+
+        // State Variables
+        let silogMenu = JSON.parse(JSON.stringify(INITIAL_SILOG_MENU));
+        let selectedDate = "2026-11-06";
+        let selectedTime = "7:30 PM";
+        let selectedPax = 2;
+        let selectedTableZone = "Zone A: Outdoor Street-Side";
+        let selectedEggPref = "Runny Yolk (Malasado)";
+        let preOrderCart = { 1: 1 }; // Default: 1x Chicsilog Overload
+        let savedReservations = [];
+        let currentModalPass = null;
+        let stagedPasteImg = null;
+
+        // Initialize Page
+        window.addEventListener('DOMContentLoaded', () => {
+            loadLocalStorageState();
+            setQuickDate(0);
+            renderTimeSlots();
+            renderTableZones();
+            renderDyaryoMenu();
+            populatePhotoSelect();
+            syncCouponSlip();
+            setupClipboardImagePaste();
+        });
+
+        function loadLocalStorageState() {
+            try {
+                const customPhotos = JSON.parse(localStorage.getItem(STORAGE_KEY_PHOTOS) || '{}');
+                silogMenu.forEach(item => {
+                    if (customPhotos[item.id]) item.image = customPhotos[item.id];
+                });
+
+                savedReservations = JSON.parse(localStorage.getItem(STORAGE_KEY_PASSES) || '[]');
+                document.getElementById('savedPassCountBadge').textContent = savedReservations.length;
+            } catch (err) {}
+        }
+
+        // Language Switcher (TAGLISH | ENGLISH)
+        function setLanguageMode(lang) {
+            currentLang = lang;
+            const btnTl = document.getElementById('langBtnTaglish');
+            const btnEn = document.getElementById('langBtnEnglish');
+
+            if (lang === 'taglish') {
+                btnTl.className = "px-2 py-0.5 text-[11px] font-bold bg-tinta text-dyaryo transition";
+                btnEn.className = "px-2 py-0.5 text-[11px] font-bold text-tinta hover:bg-yolk/30 transition";
+            } else {
+                btnEn.className = "px-2 py-0.5 text-[11px] font-bold bg-tinta text-dyaryo transition";
+                btnTl.className = "px-2 py-0.5 text-[11px] font-bold text-tinta hover:bg-yolk/30 transition";
+            }
+
+            const dict = I18N_DICTIONARY[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) el.textContent = dict[key];
+            });
+
+            renderTimeSlots();
+            renderTableZones();
+            renderDyaryoMenu();
+            syncCouponSlip();
+            showToast(lang === 'english' ? "Switched to Full English Mode" : "Switched to Taglish Mode");
+        }
+
+        // STEP 1A: Date Controls (Anchored to Nov 6, 2026)
+        function setQuickDate(offsetDays) {
+            const base = new Date(2026, 10, 6); // Nov 6, 2026
+            base.setDate(base.getDate() + offsetDays);
+            const yyyy = base.getFullYear();
+            const mm = String(base.getMonth() + 1).padStart(2, '0');
+            const dd = String(base.getDate()).padStart(2, '0');
+            const iso = `${yyyy}-${mm}-${dd}`;
+
+            const dateInput = document.getElementById('resDateInput');
+            dateInput.value = iso;
+            selectedDate = iso;
+
+            const todayBtn = document.getElementById('quickDateTodayBtn');
+            const tomBtn = document.getElementById('quickDateTomorrowBtn');
+            if (offsetDays === 0) {
+                todayBtn.className = "flex-1 font-mono text-[11px] font-bold py-1.5 px-2 border border-tinta bg-tinta text-dyaryo";
+                tomBtn.className = "flex-1 font-mono text-[11px] font-bold py-1.5 px-2 border border-tinta bg-dyaryo hover:bg-dyaryo-aged text-tinta";
+            } else {
+                tomBtn.className = "flex-1 font-mono text-[11px] font-bold py-1.5 px-2 border border-tinta bg-tinta text-dyaryo";
+                todayBtn.className = "flex-1 font-mono text-[11px] font-bold py-1.5 px-2 border border-tinta bg-dyaryo hover:bg-dyaryo-aged text-tinta";
+            }
+            syncCouponSlip();
+        }
+
+        function handleDateChange() {
+            selectedDate = document.getElementById('resDateInput').value;
+            syncCouponSlip();
+        }
+
+        // STEP 1B: Party Size Controls
+        function adjustPax(delta) {
+            let next = selectedPax + delta;
+            if (next < 1) next = 1;
+            if (next > 15) next = 15;
+            setExactPax(next);
+        }
+
+        function setExactPax(num) {
+            selectedPax = num;
+            let label = `${num} Pax (Guests)`;
+            if (num === 1) label = "1 Pax (Solo Diner)";
+            else if (num === 2) label = "2 Pax (Couple / Duo)";
+            else if (num === 4) label = "4 Pax (Small Group)";
+            else if (num >= 5) label = `${num} Pax (Barkada / Group)`;
+
+            document.getElementById('paxCountDisplay').textContent = label;
+
+            // Auto-select Barkada Long Table if 5+ Pax
+            if (num >= 5 && selectedTableZone !== "Zone C: Barkada Long Table") {
+                selectedTableZone = "Zone C: Barkada Long Table";
+                showToast("Switched to 'Zone C: Barkada Long Table' for 5+ guests!");
+            }
+
+            renderTableZones();
+            syncCouponSlip();
+        }
+
+        // STEP 1C: Arrival Time Slot Grid
+        function renderTimeSlots() {
+            const container = document.getElementById('timeSlotsContainer');
+            container.innerHTML = TIME_SLOTS_DATA.map(slot => {
+                const isSelected = slot.time === selectedTime;
+                const statusText = currentLang === 'english' ? slot.statusEn : slot.statusTl;
+                return `
+                <button type="button" onclick="selectTimeSlot('${slot.time}')"
+                        class="p-2 border-2 border-tinta text-left font-mono transition ${isSelected ? 'slot-selected' : 'bg-dyaryo hover:bg-dyaryo-aged text-tinta'}">
+                    <div class="flex items-center justify-between">
+                        <strong class="text-xs sm:text-sm font-bold">${slot.time}</strong>
+                        ${isSelected ? `<span class="text-[9px] bg-pulangtatak text-white px-1.5 py-0.5 font-bold">SELECTED</span>` : ''}
+                    </div>
+                    <span class="text-[10px] block mt-0.5 truncate ${isSelected ? 'text-yolk-light' : 'text-tinta-muted'}">
+                        ${statusText}
+                    </span>
+                </button>
+                `;
+            }).join('');
+        }
+
+        function selectTimeSlot(timeStr) {
+            selectedTime = timeStr;
+            renderTimeSlots();
+            syncCouponSlip();
+        }
+
+        // STEP 2: Interactive Floor Plan Zones
+        function renderTableZones() {
+            const container = document.getElementById('tableZonesContainer');
+            container.innerHTML = TABLE_ZONES_DATA.map(zone => {
+                const isSelected = zone.id === selectedTableZone;
+                const isRecommended = selectedPax >= zone.recommendedMin && selectedPax <= zone.recommendedMax;
+                const title = currentLang === 'english' ? zone.titleEn : zone.titleTaglish;
+                const desc = currentLang === 'english' ? zone.descEn : zone.descTaglish;
+
+                return `
+                <button type="button" onclick="selectTableZone('${zone.id}')"
+                        class="p-3.5 text-left transition flex flex-col justify-between ${isSelected ? 'table-zone-selected' : 'dyaryo-box-flat hover:bg-dyaryo-paper'}">
+                    <div>
+                        <div class="flex items-center justify-between gap-1 font-mono text-[10px] font-bold pb-1.5 mb-2 border-b border-tinta">
+                            <span class="${isSelected ? 'text-pulangtatak' : 'text-tinta-muted'}">${zone.code}</span>
+                            <span class="px-1.5 py-0.5 ${isSelected ? 'bg-pulangtatak text-white' : 'bg-tinta text-dyaryo'}">
+                                ${isSelected ? '✓ SELECTED' : zone.capacity}
+                            </span>
+                        </div>
+                        <h4 class="font-headline text-xl uppercase text-tinta leading-tight">${title}</h4>
+                        <p class="text-xs text-tinta-muted mt-1 leading-snug">${desc}</p>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-dashed border-tinta/40 flex items-center justify-between font-mono text-[10px] font-bold">
+                        <span class="${isRecommended ? 'text-dahon' : 'text-tinta-muted'}">
+                            ${isRecommended ? '★ Best fit for ' + selectedPax + ' Pax' : 'Capacity: ' + zone.capacity}
+                        </span>
+                        <span class="underline">${isSelected ? 'Active Zone' : 'Select →'}</span>
+                    </div>
+                </button>
+                `;
+            }).join('');
+        }
+
+        function selectTableZone(zoneId) {
+            selectedTableZone = zoneId;
+            renderTableZones();
+            syncCouponSlip();
+        }
+
+        // STEP 3: Pre-Order Mode, Egg Doneness & Menu Cards
+        function setDiningOrderMode(mode) {
+            const btnPre = document.getElementById('modeBtnPreorder');
+            const btnTab = document.getElementById('modeBtnTableOnly');
+
+            if (mode === 'tableonly') {
+                preOrderCart = {};
+                btnTab.className = "p-2.5 border-2 border-tinta font-bold text-left flex items-center justify-between slot-selected";
+                btnPre.className = "p-2.5 border-2 border-tinta font-bold text-left flex items-center justify-between bg-dyaryo text-tinta hover:bg-dyaryo-aged";
+                showToast("Table-Only mode selected — you can order at the counter upon arrival!");
+            } else {
+                if (Object.keys(preOrderCart).length === 0) {
+                    preOrderCart = { 1: 1 };
+                }
+                btnPre.className = "p-2.5 border-2 border-tinta font-bold text-left flex items-center justify-between slot-selected";
+                btnTab.className = "p-2.5 border-2 border-tinta font-bold text-left flex items-center justify-between bg-dyaryo text-tinta hover:bg-dyaryo-aged";
+            }
+            renderDyaryoMenu();
+            syncCouponSlip();
+        }
+
+        function setGlobalEggPref(pref) {
+            selectedEggPref = pref;
+            const btnM = document.getElementById('eggBtnMalasado');
+            const btnW = document.getElementById('eggBtnWelldone');
+            if (pref.includes('Runny')) {
+                btnM.className = "px-2.5 py-1 font-bold bg-tinta text-dyaryo";
+                btnW.className = "px-2.5 py-1 font-bold text-tinta hover:bg-yolk/30";
+            } else {
+                btnW.className = "px-2.5 py-1 font-bold bg-tinta text-dyaryo";
+                btnM.className = "px-2.5 py-1 font-bold text-tinta hover:bg-yolk/30";
+            }
+            syncCouponSlip();
+        }
+
+        function renderDyaryoMenu() {
+            const grid = document.getElementById('dyaryoMenuGrid');
+            grid.innerHTML = silogMenu.map(dish => {
+                const qty = preOrderCart[dish.id] || 0;
+                const desc = currentLang === 'english' ? dish.detailsEn : dish.detailsTaglish;
+                return `
+                <div class="border-2 border-tinta bg-dyaryo flex flex-col justify-between ${qty > 0 ? 'ring-2 ring-pulangtatak bg-dyaryo-paper' : ''}">
+                    <div>
+                        <!-- Dish Photo Header -->
+                        <div class="relative h-40 w-full bg-tinta border-b-2 border-tinta overflow-hidden">
+                            <img src="${dish.image}" 
+                                 onerror="this.onerror=null;this.src='https://placehold.co/600x400/141210/EFE8D8?text=Silugan+sa+Maceda';"
+                                 alt="${dish.name}" 
+                                 class="w-full h-full object-cover newsprint-photo">
+                            <span class="absolute top-2 left-2 bg-tinta text-dyaryo font-mono text-[10px] font-bold px-2 py-0.5 uppercase">
+                                ${dish.tag}
+                            </span>
+                            <button type="button" onclick="openPhotoImporterModal(${dish.id})"
+                                    class="absolute top-2 right-2 bg-dyaryo/95 hover:bg-yolk text-tinta border border-tinta font-mono text-[10px] font-bold px-2 py-0.5"
+                                    title="Change photo (Ctrl+V)">
+                                📷 Change Photo
+                            </button>
+                            <div class="absolute bottom-2 right-2 bg-yolk text-tinta border-2 border-tinta px-2.5 py-0.5 font-headline text-2xl">
+                                ₱${dish.price}
+                            </div>
+                        </div>
+
+                        <!-- Dish Description -->
+                        <div class="p-3.5">
+                            <div class="flex items-center justify-between gap-2">
+                                <h4 class="font-headline text-xl uppercase text-tinta tracking-wide">${dish.name}</h4>
+                                ${qty > 0 ? `<span class="bg-pulangtatak text-white font-mono text-[10px] font-bold px-2 py-0.5 shrink-0">${qty}x ADDED</span>` : ''}
+                            </div>
+                            <p class="text-xs text-tinta-muted mt-1 leading-snug font-medium">
+                                ${desc}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Quantity Controls: [ - ] 0 [ + ] -->
+                    <div class="px-3.5 py-2.5 bg-dyaryo-dark border-t-2 border-tinta flex items-center justify-between gap-2 font-mono">
+                        <div class="flex items-center gap-2 w-full justify-between">
+                            <button type="button" onclick="updateDishQty(${dish.id}, -1)"
+                                    class="dyaryo-btn bg-dyaryo w-9 h-8 font-bold text-sm">−</button>
+                            <span class="text-xs font-bold uppercase text-tinta">
+                                ${qty > 0 ? `${qty} Order (₱${qty * dish.price})` : `0 (Add ₱${dish.price})`}
+                            </span>
+                            <button type="button" onclick="updateDishQty(${dish.id}, 1)"
+                                    class="dyaryo-btn bg-yolk w-9 h-8 font-bold text-sm">+</button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function updateDishQty(dishId, delta) {
+            const current = preOrderCart[dishId] || 0;
+            const next = current + delta;
+            if (next <= 0) {
+                delete preOrderCart[dishId];
+            } else {
+                preOrderCart[dishId] = next;
+            }
+            renderDyaryoMenu();
+            syncCouponSlip();
+        }
+
+        // Sync Sticky Right-Hand Reservation Coupon
+        function syncCouponSlip() {
+            let dateLabel = selectedDate;
+            if (selectedDate === "2026-11-06") dateLabel = "Tonight (Nov 6)";
+            else if (selectedDate === "2026-11-07") dateLabel = "Tomorrow (Nov 7)";
+
+            document.getElementById('slipDateTime').textContent = `${dateLabel} @ ${selectedTime}`;
+            document.getElementById('slipPax').textContent = document.getElementById('paxCountDisplay').textContent;
+            document.getElementById('slipTableZone').textContent = selectedTableZone;
+            document.getElementById('slipEggPref').textContent = selectedEggPref;
+
+            const entries = Object.entries(preOrderCart);
+            const itemsContainer = document.getElementById('slipOrderItemsContainer');
+            const countBadge = document.getElementById('slipItemCount');
+            const totalEl = document.getElementById('slipGrandTotal');
+
+            let totalQty = 0;
+            let totalPesos = 0;
+
+            if (entries.length === 0) {
+                countBadge.textContent = "Table Only";
+                itemsContainer.innerHTML = `
+                    <div class="p-3 bg-dyaryo border border-dashed border-tinta text-center font-mono text-[11px] text-tinta-muted">
+                        Table Reservation Only — You will order your meals directly at the counter upon arrival.
+                    </div>
+                `;
+                totalEl.textContent = "₱0 (Pay at Counter)";
+                return;
+            }
+
+            itemsContainer.innerHTML = entries.map(([idStr, qty]) => {
+                const dish = silogMenu.find(m => m.id === parseInt(idStr, 10));
+                if (!dish) return '';
+                totalQty += qty;
+                const sub = dish.price * qty;
+                totalPesos += sub;
+                return `
+                <div class="flex items-center justify-between bg-dyaryo border border-tinta px-2.5 py-1.5 font-mono text-xs">
+                    <div class="truncate pr-2">
+                        <strong class="text-tinta">${qty}x ${dish.name}</strong>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                        <strong class="text-tinta">₱${sub}</strong>
+                        <button type="button" onclick="updateDishQty(${dish.id}, -1)" class="text-pulangtatak font-bold hover:underline" title="Remove 1">✕</button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            countBadge.textContent = `${totalQty} Meal${totalQty > 1 ? 's' : ''}`;
+            totalEl.textContent = `₱${totalPesos.toLocaleString()}`;
+        }
+
+        // STEP 4: Confirm Reservation & Generate Stamped Pass
+        function submitDyaryoReservation() {
+            const nameInput = document.getElementById('customerNameInput');
+            const phoneInput = document.getElementById('customerPhoneInput');
+            const notesInput = document.getElementById('customNotesInput');
+            const errBox = document.getElementById('couponFormError');
+
+            const name = nameInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const customNote = notesInput.value.trim();
+
+            if (!name || !phone) {
+                errBox.classList.remove('hidden');
+                nameInput.focus();
+                return;
+            }
+            errBox.classList.add('hidden');
+
+            // Gather Checked Requests
+            const checkedReqs = Array.from(document.querySelectorAll('.req-check:checked')).map(el => el.value);
+            const includeGulay = document.getElementById('freeGulayBagoongCheck').checked;
+            if (includeGulay) checkedReqs.unshift("FREE Kangkong, Okra & Bagoong");
+            if (customNote) checkedReqs.push(customNote);
+
+            // Gather Ordered Items
+            let totalPesos = 0;
+            const orderedList = Object.entries(preOrderCart).map(([idStr, qty]) => {
+                const dish = silogMenu.find(m => m.id === parseInt(idStr, 10));
+                const sub = dish.price * qty;
+                totalPesos += sub;
+                return { name: dish.name, qty, subtotal: sub };
+            });
+
+            const refCode = `SSM-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+            const passRecord = {
+                refCode,
+                name,
+                phone,
+                date: selectedDate,
+                time: selectedTime,
+                pax: document.getElementById('paxCountDisplay').textContent,
+                tableZone: selectedTableZone,
+                eggPref: selectedEggPref,
+                requests: checkedReqs,
+                items: orderedList,
+                totalPesos
+            };
+
+            currentModalPass = passRecord;
+            savedReservations.unshift(passRecord);
+            try {
+                localStorage.setItem(STORAGE_KEY_PASSES, JSON.stringify(savedReservations));
+            } catch (e) {}
+            document.getElementById('savedPassCountBadge').textContent = savedReservations.length;
+
+            openOfficialPassModal(passRecord);
+        }
+
+        function openOfficialPassModal(pass) {
+            document.getElementById('modalRefCode').textContent = pass.refCode;
+            document.getElementById('modalTableBadge').textContent = pass.tableZone;
+
+            const qrString = encodeURIComponent(`SILUGAN SA MACEDA | ${pass.refCode} | ${pass.name} | ${pass.date} ${pass.time} | ${pass.tableZone} | PHP ${pass.totalPesos}`);
+            document.getElementById('modalQrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${qrString}`;
+
+            const itemsHtml = pass.items.length > 0
+                ? pass.items.map(i => `<div class="flex justify-between"><span>• ${i.qty}x ${i.name}</span><strong>₱${i.subtotal}</strong></div>`).join('')
+                : `<div>• Table Only (Order at the counter upon arrival)</div>`;
+
+            document.getElementById('modalPassDetails').innerHTML = `
+                <div class="flex justify-between"><span>GUEST NAME:</span><strong>${pass.name} (${pass.phone})</strong></div>
+                <div class="flex justify-between"><span>DATE & TIME:</span><strong class="text-pulangtatak">${pass.date} @ ${pass.time}</strong></div>
+                <div class="flex justify-between"><span>PARTY SIZE:</span><strong>${pass.pax}</strong></div>
+                <div class="flex justify-between"><span>EGG DONENESS:</span><strong>${pass.eggPref}</strong></div>
+                <div class="pt-2 mt-2 border-t border-tinta space-y-1">
+                    <strong class="block uppercase text-[10px] text-tinta-muted">PRE-ORDERED MEALS:</strong>
+                    ${itemsHtml}
+                </div>
+                <div class="pt-2 mt-2 border-t border-tinta flex justify-between text-sm font-bold">
+                    <span>ESTIMATED BILL AT COUNTER:</span>
+                    <span class="text-pulangtatak">₱${pass.totalPesos}</span>
+                </div>
+                <div class="pt-1 text-[10px] text-tinta-muted">
+                    <strong>Notes:</strong> ${pass.requests.join(' • ')}
+                </div>
+            `;
+
+            document.getElementById('officialPassModal').classList.remove('hidden');
+        }
+
+        function closeOfficialPassModal() {
+            document.getElementById('officialPassModal').classList.add('hidden');
+        }
+
+        function copyOfficialPassText() {
+            if (!currentModalPass) return;
+            const p = currentModalPass;
+            const itemsTxt = p.items.length
+                ? p.items.map(i => `- ${i.qty}x ${i.name} (₱${i.subtotal})`).join('\n')
+                : '- Table Only (Will order upon arrival)';
+
+            const text = `📰 SILUGAN SA MACEDA — TABLE RESERVATION PASS\nRef Code: ${p.refCode}\nGuest: ${p.name} (${p.phone})\nDate & Time: ${p.date} @ ${p.time}\nZone: ${p.tableZone} (${p.pax})\nEgg Doneness: ${p.eggPref}\nPre-Order:\n${itemsTxt}\nEstimated Bill: ₱${p.totalPesos}\n📍 1008 Maceda St., Sampaloc, Manila`;
+
+            const area = document.createElement('textarea');
+            area.value = text;
+            document.body.appendChild(area);
+            area.select();
+            document.execCommand('copy');
+            document.body.removeChild(area);
+
+            const btn = document.getElementById('copyPassBtnText');
+            btn.textContent = "Copied to Clipboard!";
+            setTimeout(() => { btn.textContent = "Copy Summary for Messenger/SMS"; }, 2000);
+        }
+
+        // My Saved Reservations Modal
+        function openMyReservationsModal() {
+            const listEl = document.getElementById('myReservationsList');
+            if (savedReservations.length === 0) {
+                listEl.innerHTML = `<div class="p-6 text-center text-tinta-muted">No saved reservations yet. Book your table on the main page!</div>`;
+            } else {
+                listEl.innerHTML = savedReservations.map((p, idx) => `
+                    <div class="p-3 bg-dyaryo border-2 border-tinta flex items-center justify-between gap-2">
+                        <div>
+                            <strong class="text-pulangtatak">${p.refCode}</strong> • <span>${p.tableZone}</span>
+                            <p class="font-bold text-tinta">${p.name} — ${p.date} @ ${p.time}</p>
+                            <p class="text-[11px] text-tinta-muted">${p.pax} • Est. Bill: ₱${p.totalPesos}</p>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="closeMyReservationsModal(); currentModalPass=savedReservations[${idx}]; openOfficialPassModal(currentModalPass);"
+                                    class="dyaryo-btn bg-yolk text-tinta font-bold px-2.5 py-1 text-[11px]">
+                                View Pass
+                            </button>
+                            <button onclick="deleteSavedReservation(${idx})"
+                                    class="dyaryo-btn bg-dyaryo text-pulangtatak font-bold px-2 py-1 text-[11px]" title="Cancel">
+                                ✕
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            document.getElementById('myReservationsModal').classList.remove('hidden');
+        }
+
+        function closeMyReservationsModal() {
+            document.getElementById('myReservationsModal').classList.add('hidden');
+        }
+
+        function deleteSavedReservation(idx) {
+            savedReservations.splice(idx, 1);
+            try {
+                localStorage.setItem(STORAGE_KEY_PASSES, JSON.stringify(savedReservations));
+            } catch (e) {}
+            document.getElementById('savedPassCountBadge').textContent = savedReservations.length;
+            openMyReservationsModal();
+        }
+
+        // Ctrl+V FB/Google Photo Paster
+        function populatePhotoSelect() {
+            document.getElementById('photoTargetSelect').innerHTML = silogMenu.map(d =>
+                `<option value="${d.id}">${d.name} (₱${d.price})</option>`
+            ).join('');
+        }
+
+        function openPhotoImporterModal(dishId) {
+            if (dishId) document.getElementById('photoTargetSelect').value = dishId;
+            stagedPasteImg = null;
+            document.getElementById('pastedPhotoPreview').classList.add('hidden');
+            document.getElementById('photoImporterModal').classList.remove('hidden');
+        }
+
+        function closePhotoImporterModal() {
+            document.getElementById('photoImporterModal').classList.add('hidden');
+        }
+
+        function setupClipboardImagePaste() {
+            window.addEventListener('paste', (e) => {
+                const modal = document.getElementById('photoImporterModal');
+                if (modal.classList.contains('hidden')) return;
+                const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+                for (let i = 0; i < items.length; i++) {
+                    if (items[i].type.indexOf('image') !== -1) {
+                        const reader = new FileReader();
+                        reader.onload = (ev) => {
+                            stagedPasteImg = ev.target.result;
+                            const img = document.getElementById('pastedPhotoPreview');
+                            img.src = stagedPasteImg;
+                            img.classList.remove('hidden');
+                            showToast("Image pasted! Click 'Save Photo to Menu'.");
+                        };
+                        reader.readAsDataURL(items[i].getAsFile());
+                        break;
+                    }
+                }
+            });
+        }
+
+        function handleFileUploadPreview(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                stagedPasteImg = ev.target.result;
+                const img = document.getElementById('pastedPhotoPreview');
+                img.src = stagedPasteImg;
+                img.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function applyCustomDishPhoto() {
+            if (!stagedPasteImg) {
+                showToast("Paste an image (Ctrl+V) or select a file first!");
+                return;
+            }
+            const id = parseInt(document.getElementById('photoTargetSelect').value, 10);
+            const dish = silogMenu.find(m => m.id === id);
+            if (dish) {
+                dish.image = stagedPasteImg;
+                try {
+                    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY_PHOTOS) || '{}');
+                    saved[id] = stagedPasteImg;
+                    localStorage.setItem(STORAGE_KEY_PHOTOS, JSON.stringify(saved));
+                } catch (e) {}
+            }
+            renderDyaryoMenu();
+            closePhotoImporterModal();
+            showToast("Custom photo saved to menu!");
+        }
+
+        function resetDishPhotos() {
+            localStorage.removeItem(STORAGE_KEY_PHOTOS);
+            silogMenu = JSON.parse(JSON.stringify(INITIAL_SILOG_MENU));
+            renderDyaryoMenu();
+            closePhotoImporterModal();
+            showToast("Restored default menu photos.");
+        }
+
+        let toastTimeout;
+        function showToast(msg) {
+            const el = document.getElementById('dyaryoToast');
+            document.getElementById('dyaryoToastText').textContent = msg;
+            el.classList.remove('hidden');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => el.classList.add('hidden'), 2600);
+        }
+    </script>
+</body>
+</html>
